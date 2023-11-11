@@ -32,12 +32,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853923451230442187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -3.63, z: -1}
+  m_LocalPosition: {x: 8, y: -3.5, z: -1}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &853923451230442198
 SpriteRenderer:
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ininitialBehavior: {fileID: 140707363230563601}
-  playerTarget: {fileID: 0}
-  target: {fileID: 0}
+  playerTarget: {fileID: 4957051051744040795, guid: a92d4e0c052108e43b2d4ded59044ccd, type: 3}
+  target: {fileID: 1060190221461942553, guid: 454db64237ecd1541a6fc98c9e527674, type: 3}
   isCrime: 0
   points: 10
 --- !u!114 &140707363230563601
@@ -188,6 +188,10 @@ MonoBehaviour:
   maxDistanceThreshold: 100
   fleeSprite: {fileID: 21300000, guid: 467c87d2173ece541a383a08f6afe54e, type: 3}
   seekSprite: {fileID: 21300000, guid: f01fccc4c1411af40b7149c53c69bb75, type: 3}
+  LeftSprite: {fileID: 21300000, guid: 7cd625676693549449841bc95e75bad0, type: 3}
+  RightSprite: {fileID: 21300000, guid: ca16eb6fa38845845b67af39c8a85d77, type: 3}
+  UpSprite: {fileID: 21300000, guid: 4d02db049a7220f40b46e6818923b703, type: 3}
+  DownSprite: {fileID: 21300000, guid: 86d8c43f07bdd0c41a9b1ee7543ed950, type: 3}
 --- !u!114 &7102020174896487687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +207,10 @@ MonoBehaviour:
   maxDistanceThreshold: 100
   wanderSprite: {fileID: 21300000, guid: ca16eb6fa38845845b67af39c8a85d77, type: 3}
   seekSprite: {fileID: 21300000, guid: f01fccc4c1411af40b7149c53c69bb75, type: 3}
+  LeftSprite: {fileID: 21300000, guid: 1d58cda8844d4864e859a0dce096c8d6, type: 3}
+  RightSprite: {fileID: 21300000, guid: 467c87d2173ece541a383a08f6afe54e, type: 3}
+  UpSprite: {fileID: 21300000, guid: 6e9f6b477bfd4d44f8c05bd5e71a59cf, type: 3}
+  DownSprite: {fileID: 21300000, guid: 9f61e063235dcee459a736b25a838c47, type: 3}
 --- !u!114 &6993531431648250326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,4 +226,9 @@ MonoBehaviour:
   maxDistanceThreshold: 100
   fleeSprite: {fileID: 21300000, guid: 467c87d2173ece541a383a08f6afe54e, type: 3}
   wanderSprite: {fileID: 21300000, guid: ca16eb6fa38845845b67af39c8a85d77, type: 3}
+  LeftSprite: {fileID: 21300000, guid: 363cbd27fd1043d499070c32e3d2b5c5, type: 3}
+  RightSprite: {fileID: 21300000, guid: f01fccc4c1411af40b7149c53c69bb75, type: 3}
+  UpSprite: {fileID: 21300000, guid: 2d801a862bb5d9947bcc208f1ea17b13, type: 3}
+  DownSprite: {fileID: 21300000, guid: c33c13dbf89193940854be110430d0b2, type: 3}
   hasCommitCrime: 0
+  aStar: {fileID: 0}

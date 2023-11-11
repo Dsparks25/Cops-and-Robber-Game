@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 050b4e629be0de045a1d466e68aeff70
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Roads: {instanceID: 0}
+  - crimeSpot: {fileID: 1060190221461942555, guid: 454db64237ecd1541a6fc98c9e527674, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

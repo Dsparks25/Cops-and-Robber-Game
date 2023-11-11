@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public Sprite UpSprite;
     public Sprite DownSprite;
 
+    private Transform playerTransform;
+
     public Movement movement { get; private set; }
 
     private void Awake()
@@ -18,8 +20,10 @@ public class Player : MonoBehaviour
         this.movement = GetComponent<Movement>();
     }
 
-    private void Update()
+    public void Update()
     {
+        playerTransform = this.gameObject.transform;
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             this.movement.SetDirection(Vector2.up);
@@ -45,5 +49,10 @@ public class Player : MonoBehaviour
     public void ResetState()
     {
         this.gameObject.SetActive(true);
+    }
+
+    public Transform GetPlayerTransform()
+    {
+        return playerTransform;
     }
 }

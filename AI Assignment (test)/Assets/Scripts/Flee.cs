@@ -8,6 +8,11 @@ public class Flee : CriminalController
     public Sprite wanderSprite;
     public Sprite seekSprite;
 
+    public Sprite LeftSprite;
+    public Sprite RightSprite;
+    public Sprite UpSprite;
+    public Sprite DownSprite;
+
     private void OnDisable()
     {
         // If there is no crime
@@ -24,8 +29,7 @@ public class Flee : CriminalController
             this.criminal.seek.Enable();
             this.gameObject.GetComponent<SpriteRenderer>().sprite = seekSprite;
             Debug.Log("Seeking");
-        }
-        
+        }  
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -65,6 +69,31 @@ public class Flee : CriminalController
             {
                 this.criminal.flee.Disable();
             }
+        }
+    }
+
+    private void Update()
+    {
+        UpdateSprite();
+    }
+
+    private void UpdateSprite()
+    {
+        if (this.criminal.movement.direction == Vector2.up)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = UpSprite;
+        }
+        else if (this.criminal.movement.direction == Vector2.left)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = LeftSprite;
+        }
+        else if (this.criminal.movement.direction == Vector2.right)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = RightSprite;
+        }
+        else if (this.criminal.movement.direction == Vector2.down)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = DownSprite;
         }
     }
 }

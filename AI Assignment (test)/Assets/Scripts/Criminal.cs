@@ -21,7 +21,12 @@ public class Criminal : MonoBehaviour
 
     public bool isCrime;
 
+    private Player playerScript;
+    private CrimeSpot crimeSpotScript;
+
     public int points = 10;
+
+    public GridManager gridManager;
 
     private void Awake()
     {
@@ -34,6 +39,9 @@ public class Criminal : MonoBehaviour
     private void Start()
     {
         ResetState();
+
+        crimeSpotScript = FindObjectOfType<CrimeSpot>();
+        playerScript = FindObjectOfType<Player>();
     }
 
     public void ResetState()
@@ -57,6 +65,14 @@ public class Criminal : MonoBehaviour
         {
             isCrime = !isCrime;
         }
+
+        playerTarget = playerScript.GetPlayerTransform();
+        target = crimeSpotScript.GetPreviousCrimeSpotTransform(); 
     }
 
+    private void FixedUpdate()
+    {
+       // Vector2 nearestNode = gridManager.GetNearestNode(transform.position);
+        //Debug.Log($"AI snapped to nearest node: {nearestNode}");
+    }
 }

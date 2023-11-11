@@ -49,7 +49,9 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 position = this.rigidbody.position;
-        Vector2 translation = this.direction * this.speed * this.Acceleration * Time.fixedDeltaTime;
+
+        // Direction is a Unit Vector
+        Vector2 translation = this.direction * this.speed * Time.fixedDeltaTime;
 
         this.rigidbody.MovePosition(position + translation);
     }
@@ -73,5 +75,10 @@ public class Movement : MonoBehaviour
         // Checks for obstacles
         RaycastHit2D hit = Physics2D.BoxCast(this.transform.position, Vector2.one * 0.75f, 0.0f, direction, 1.5f, this.obstacleLayer);
         return hit.collider != null;
+    }
+
+    public void Disable()
+    {
+        this.enabled = false;
     }
 }
