@@ -4,6 +4,8 @@ using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
+    // https://pavcreations.com/pathfinding-with-a-star-algorithm-in-unity-small-game-project/
+
     // References to grid and tilemaps
     public Grid grid;
     public Tilemap roadTilemap;
@@ -23,7 +25,7 @@ public class GridManager : MonoBehaviour
         DrawGizmos();
     }
 
-    // Draw nodes to the scene
+    //Draw nodes to the scene
     void DrawGizmos()
     {
         if (gridNodes == null)
@@ -33,7 +35,7 @@ public class GridManager : MonoBehaviour
 
         foreach (var node in gridNodes)
         {
-            Gizmos.DrawSphere(node.Key, 0.1f); 
+            Gizmos.DrawSphere(node.Key, 0.1f);
         }
     }
 
@@ -150,7 +152,7 @@ public class GridManager : MonoBehaviour
             closedSet.Add(current);
 
             // Explore neighbors of the current node
-            foreach (Vector2 neighbor in gridNodes[current])
+            foreach (Vector2 neighbor in gridNodes[current]) // Need to look at again
             {
                 // Skip neighbors in the closed set
                 if (closedSet.Contains(neighbor))

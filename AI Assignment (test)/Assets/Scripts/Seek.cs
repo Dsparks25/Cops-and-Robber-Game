@@ -8,16 +8,8 @@ public class Seek : CriminalController
     public Sprite fleeSprite;
     public Sprite wanderSprite;
 
-    public Sprite LeftSprite;
-    public Sprite RightSprite;
-    public Sprite UpSprite;
-    public Sprite DownSprite;
-
-    public bool hasCommitCrime;
-
     private List<Vector2> currentPath;
     private int currentPathIndex;
-   // private Intersection intersection;
 
     public GridManager gridManager;
 
@@ -128,7 +120,6 @@ public class Seek : CriminalController
             direction = GetClosestUnitVector(direction);
 
             this.criminal.movement.SetDirection(direction);
-            UpdateSprite();
             DrawPath();
         }
     }
@@ -151,26 +142,6 @@ public class Seek : CriminalController
         }
 
         return closestDirection;
-    }
-
-    private void UpdateSprite()
-    {
-        if (this.criminal.movement.direction == Vector2.up)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = UpSprite;
-        }
-        else if (this.criminal.movement.direction == Vector2.left)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = LeftSprite;
-        }
-        else if (this.criminal.movement.direction == Vector2.right)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = RightSprite;
-        }
-        else if (this.criminal.movement.direction == Vector2.down)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = DownSprite;
-        }
     }
 
     private void DrawPath()

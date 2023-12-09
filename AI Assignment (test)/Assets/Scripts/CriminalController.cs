@@ -23,6 +23,3 @@ public class CriminalController : MonoBehaviour
         this.enabled = false;
     }
 }
-
-
-

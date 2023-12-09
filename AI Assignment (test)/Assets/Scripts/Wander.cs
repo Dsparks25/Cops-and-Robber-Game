@@ -10,11 +10,6 @@ public class Wander : CriminalController
     public Sprite fleeSprite;
     public Sprite seekSprite;
 
-    public Sprite LeftSprite;
-    public Sprite RightSprite;
-    public Sprite UpSprite;
-    public Sprite DownSprite;
-
     private void OnDisable()
     {
         // If there is no crime
@@ -76,31 +71,6 @@ public class Wander : CriminalController
             {
                 this.criminal.wander.Disable();
             }
-        }
-    }
-
-    private void Update()
-    {
-        UpdateSprite();
-    }
-
-    private void UpdateSprite()
-    {
-        if (this.criminal.movement.direction == Vector2.up)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = UpSprite;
-        }
-        else if (this.criminal.movement.direction == Vector2.left)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = LeftSprite;
-        }
-        else if (this.criminal.movement.direction == Vector2.right)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = RightSprite;
-        }
-        else if (this.criminal.movement.direction == Vector2.down)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = DownSprite;
         }
     }
 }

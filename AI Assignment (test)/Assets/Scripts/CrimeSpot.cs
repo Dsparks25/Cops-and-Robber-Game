@@ -19,6 +19,8 @@ public class CrimeSpot : MonoBehaviour
     private GameObject previousCrimeSpot;
     private Transform previousCrimeSpotTransform;
 
+    public Criminal criminal;
+
     private void Start()
     {
         Debug.Log("Start method called");
@@ -60,6 +62,8 @@ public class CrimeSpot : MonoBehaviour
             // Instantiate the crime spot at the random position
             previousCrimeSpot = Instantiate(crimeSpot, spawnPosition, Quaternion.identity);
             previousCrimeSpotTransform = previousCrimeSpot.transform;
+
+            criminal.isCrime = true;
         }
     }
 
@@ -69,6 +73,8 @@ public class CrimeSpot : MonoBehaviour
         if (previousCrimeSpot != null)
         {
             Destroy(previousCrimeSpot); // Destroy the previous crime location
+
+            criminal.isCrime = false;
         }
 
         SpawnCrimeSpot();

@@ -11,9 +11,17 @@ public class Criminal : MonoBehaviour
 
     public Flee flee { get; private set; }
 
-    public Seek seek { get; private set; } 
+    public Seek seek { get; private set; }
 
-    public CriminalController ininitialBehavior;
+    public WanderState Wander { get; private set; }
+    public FleeState Flee { get; private set; }
+    public SeekState Seek { get; private set; }
+
+    private BaseState currentState;
+    private BaseState initialState;
+
+
+   // public CriminalController ininitialBehavior;
 
     public Transform playerTarget;
 
@@ -31,32 +39,39 @@ public class Criminal : MonoBehaviour
     private void Awake()
     {
         this.movement = GetComponent<Movement>();
-        this.wander = GetComponent<Wander>();
-        this.flee = GetComponent<Flee>(); 
-        this.seek = GetComponent<Seek>();
+        this.Wander = GetComponent<WanderState>();
+        this.Flee = GetComponent<FleeState>();
+        this.Seek = GetComponent<SeekState>();
+        //this.wander = GetComponent<Wander>();
+       // this.flee = GetComponent<Flee>(); 
+        //this.seek = GetComponent<Seek>();
+
+        initialState = Wander;
+        currentState = initialState;
+        currentState.EnterState();
     }
 
     private void Start()
     {
-        ResetState();
+        ResetCriminal();
 
         crimeSpotScript = FindObjectOfType<CrimeSpot>();
         playerScript = FindObjectOfType<Player>();
     }
 
-    public void ResetState()
+    public void ResetCriminal()
     {
         this.gameObject.SetActive(true);
        // this.movement.ResetState();
 
-        this.wander.Enable();
-        this.flee.Disable();
-        this.seek.Disable();
+       // this.wander.Enable();
+       // this.flee.Disable();
+        //this.seek.Disable();
 
-        if (this.ininitialBehavior != null)
-        {
-            this.ininitialBehavior.Enable();
-        }
+        //if (this.ininitialBehavior != null)
+        //{
+        //    this.ininitialBehavior.Enable();
+        //}
     }
 
     private void Update()
@@ -67,12 +82,42 @@ public class Criminal : MonoBehaviour
         }
 
         playerTarget = playerScript.GetPlayerTransform();
-        target = crimeSpotScript.GetPreviousCrimeSpotTransform(); 
+        target = crimeSpotScript.GetPreviousCrimeSpotTransform();
+
+        //currentState.Update();
+       // Debug.Log("Current state: " + currentState);
+
+    
     }
 
     private void FixedUpdate()
     {
-       // Vector2 nearestNode = gridManager.GetNearestNode(transform.position);
-        //Debug.Log($"AI snapped to nearest node: {nearestNode}");
+
+    }
+
+    private void SwitchState(BaseState newState)
+    {
+        currentState.ExitState();
+        currentState = newState;
+        currentState.EnterState();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the collider has an Intersection component
+        Intersection intersection = other.GetComponent<Intersection>();
+
+        // If the intersection component exists and the script is enabled
+        if (intersection != null && this.enabled)
+        {
+            // Check for transitions within the current state
+            BaseState nextState = currentState.CheckTransitions();
+
+            // If a transition is triggered, switch to the new state
+            if (nextState != null && nextState != currentState)
+            {
+                SwitchState(nextState);
+            }
+        }
     }
 }
